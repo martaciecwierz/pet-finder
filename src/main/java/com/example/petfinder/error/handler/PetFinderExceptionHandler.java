@@ -24,7 +24,7 @@ public class PetFinderExceptionHandler extends ResponseEntityExceptionHandler {
             AnimalNotFoundException.class, AnimalImageNotFoundException.class, AnimalTypeNotFoundException.class,
             ArticleNotFoundException.class, CommentNotFoundException.class, RequestNotFoundException.class,
             RequestTypeNotFoundException.class, ShelterNotFoundException.class, UsernameNotFoundException.class,
-            VolunteerNotFoundException.class})
+            VolunteerNotFoundException.class, EmailNotFoundException.class})
     public ResponseEntity<CustomErrorResponse> handleNotFoundException(Exception exception, WebRequest request) {
         return handleException(exception, request, HttpStatus.NOT_FOUND);
     }
