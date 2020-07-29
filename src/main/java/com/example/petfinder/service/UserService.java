@@ -83,7 +83,7 @@ public class UserService {
         return modelMapper.map(user, UserDto.class);
     }
 
-    private UserDto findUserById(Long userId){
+    public UserDto findUserById(Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException(userId));
         return modelMapper.map(user, UserDto.class);

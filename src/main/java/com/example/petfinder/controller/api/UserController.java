@@ -3,16 +3,13 @@ package com.example.petfinder.controller.api;
 import com.example.petfinder.controller.request.ChangePasswordRequest;
 import com.example.petfinder.controller.request.UpdateProfileRequest;
 import com.example.petfinder.dto.user.UserDto;
-import com.example.petfinder.model.user.User;
-import com.example.petfinder.security.AppUserPrincipal;
 import com.example.petfinder.security.AuthenticationFacade;
 import com.example.petfinder.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/")
@@ -39,5 +36,44 @@ public class UserController {
         UserDto userDto = request.mapToUserDto();
         userDto.setId(userId);
         return userService.updateProfile(userDto);
+    }
+
+    @DeleteMapping("user")
+    public ResponseEntity deactivateLoggedUser() {
+        Long userId = authenticationFacade.getLoggedUserId();
+        userService.deactivateUserProfile(userId);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @DeleteMapping("user/{userId}")
+    public ResponseEntity deactivateUserById(@PathVariable Long userId) {
+        userService.deactivateUserProfile(userId);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("user/profile")
+    public UserDto getCurrentLoggedProfile() {
+        Long userId = authenticationFacade.getLoggedUserId();
+        return userService.findUserById(userId);
+    }
+
+    @GetMapping("user/{userId}")
+    public UserDto getUserById(@PathVariable Long userId) {
+        return userService.findUserById(userId);
+    }
+
+    @GetMapping("user/email/{email}")
+    public UserDto getUserByEmail(@PathVariable String email) {
+        return userService.findUserByEmail(email);
+    }
+
+    @GetMapping("users/name/{firstName}/{lastName}")
+    public List<UserDto> allUsersContainingInName(@PathVariable String firstName, @PathVariable String lastName) {
+        return userService.findByFirstNameOrLastNameContaining(firstName, lastName);
+    }
+
+    @GetMapping("users")
+    public List<UserDto> getAllUsers() {
+        return userService.findAllUsers();
     }
 }
