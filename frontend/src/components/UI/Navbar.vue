@@ -1,12 +1,12 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-    <b-navbar toggleable="lg" type="dark" variant="success">
+    <b-navbar class="nav" toggleable="lg" type="dark" variant="success">
         <b-navbar-brand href="#">NavBar</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav>
-                <b-nav-item href="#">Zwierzęta</b-nav-item>
+                <b-nav-item href="#" @click.prevent="$router.push({name: 'PetList'})">Zwierzęta</b-nav-item>
                 <b-nav-item href="#">Zapotrzebowanie</b-nav-item>
             </b-navbar-nav>
 
@@ -54,5 +54,11 @@
     }
 </script>
 <style scoped>
-
+    .nav{
+        margin-bottom: 5px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+    }
 </style>
