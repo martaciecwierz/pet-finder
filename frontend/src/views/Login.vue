@@ -74,6 +74,7 @@
     .login-panel {
         text-align: center;
         position: absolute;
+        width: 50vw;
     }
 
     .login-form-background {
@@ -85,11 +86,17 @@
     }
 
     .panel {
-        width: 50%;
-        margin-left: 25%;
+        margin-left: 25vw;
     }
 
     img {
         height: 100%;
+        width: 50vw;
+    }
+</style>
+<style scoped>
+    .row{
+        margin-right: 0;
+        margin-left: 0;
     }
 </style>
