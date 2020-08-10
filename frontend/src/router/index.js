@@ -10,7 +10,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: Login
+    component: SheltersList
   },
   {
     path: '/login',

@@ -1,5 +1,5 @@
 <template>
-    <b-card class="pet">
+    <b-card class="shelter">
       <b-row>
         <b-col col md="3" cols="12"><b-img class="shelter-logo" rounded src="https://www.goomlandscapes.co.nz/wp-content/uploads/2018/08/logo-placeholder.png"></b-img>
         </b-col>
@@ -31,12 +31,12 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-    .pet-image{
+    .shelter-logo{
         width:100%;
         height: auto;
     }
 
-    .pet{
+    .shelter{
         text-align: left;
         margin-bottom:7px;
     }

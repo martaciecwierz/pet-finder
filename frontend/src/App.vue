@@ -1,9 +1,11 @@
 <template>
   <div id="app">
+    <nav-bar v-if="$route.name!=='Login'"/>
   <b-container fluid>
       <router-view/>
 
-  </b-container><div class="footer">
+  </b-container>
+    <div v-if="$route.name!=='Login'" class="footer">
       <b-row>
           <b-col cols="4">
               <span class="font-weight-bold">Sekcja 1</span><br/>
@@ -64,3 +66,9 @@
         padding-right: 0;
     }
 </style>
+<script>
+import NavBar from "@/components/UI/Navbar";
+export default {
+  components: {NavBar}
+}
+</script>
