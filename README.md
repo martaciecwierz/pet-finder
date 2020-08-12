@@ -1,6 +1,6 @@
 # Backend
 
-##Wymagania
+## Wymagania
 - Java 8 lub nowsza
 - maven
 
