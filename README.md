@@ -1,6 +1,17 @@
 # Backend
-???
 
+##Wymagania
+- Java 8 lub nowsza
+- maven
+
+##Instalacja
+```
+mvn clean install
+```
+##Uruchomienie (port 8080)
+```
+java -jar target/pet-finder-0.0.1-SNAPSHOT.jar
+```
 # Frontend
 (w katalogu frontend)
 ## Instalacja komponentów
