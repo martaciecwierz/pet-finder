@@ -4,11 +4,11 @@
 - Java 8 lub nowsza
 - maven
 
-##Instalacja
+## Instalacja
 ```
 mvn clean install
 ```
-##Uruchomienie (port 8080)
+## Uruchomienie (port 8080)
 ```
 java -jar target/pet-finder-0.0.1-SNAPSHOT.jar
 ```
