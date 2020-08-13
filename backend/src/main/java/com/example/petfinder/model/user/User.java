@@ -21,5 +21,5 @@ public class User {
     private String email;
     private String password;
     private int rights;
-    private boolean isActive;
+    private boolean active;
 }
