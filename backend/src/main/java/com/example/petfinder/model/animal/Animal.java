@@ -2,12 +2,18 @@ package com.example.petfinder.model.animal;
 
 
 import com.example.petfinder.model.shelter.Shelter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Animal {
 
     @Id
