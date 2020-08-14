@@ -2,6 +2,8 @@ package com.example.petfinder.controller.api;
 
 import com.example.petfinder.controller.request.ChangePasswordRequest;
 import com.example.petfinder.controller.request.UpdateProfileRequest;
+import com.example.petfinder.controller.response.UserListResponse;
+import com.example.petfinder.controller.response.UserResponse;
 import com.example.petfinder.dto.user.UserDto;
 import com.example.petfinder.security.AuthenticationFacade;
 import com.example.petfinder.service.UserService;
@@ -31,11 +33,12 @@ public class UserController {
     }
 
     @PutMapping("user/profile")
-    public UserDto updateUserProfile(@RequestBody UpdateProfileRequest request){
+    public UserResponse updateUserProfile(@RequestBody UpdateProfileRequest request) {
         Long userId = authenticationFacade.getLoggedUserId();
         UserDto userDto = request.mapToUserDto();
         userDto.setId(userId);
-        return userService.updateProfile(userDto);
+        UserDto updatedUserDto = userService.updateProfile(userDto);
+        return UserResponse.mapFromUserDto(updatedUserDto);
     }
 
     @DeleteMapping("user")
@@ -52,28 +55,28 @@ public class UserController {
     }
 
     @GetMapping("user/profile")
-    public UserDto getCurrentLoggedProfile() {
+    public UserResponse getCurrentLoggedProfile() {
         Long userId = authenticationFacade.getLoggedUserId();
-        return userService.findUserById(userId);
+        return UserResponse.mapFromUserDto(userService.findUserById(userId));
     }
 
     @GetMapping("user/{userId}")
-    public UserDto getUserById(@PathVariable Long userId) {
-        return userService.findUserById(userId);
+    public UserResponse getUserById(@PathVariable Long userId) {
+        return UserResponse.mapFromUserDto(userService.findUserById(userId));
     }
 
     @GetMapping("user/email/{email}")
-    public UserDto getUserByEmail(@PathVariable String email) {
-        return userService.findUserByEmail(email);
+    public UserResponse getUserByEmail(@PathVariable String email) {
+        return UserResponse.mapFromUserDto(userService.findUserByEmail(email));
     }
 
-    @GetMapping("users/name/{firstName}/{lastName}")
-    public List<UserDto> allUsersContainingInName(@PathVariable String firstName, @PathVariable String lastName) {
-        return userService.findByFirstNameOrLastNameContaining(firstName, lastName);
+    @GetMapping("users/firstname/{firstName}/lastname/{lastName}")
+    public UserListResponse allUsersContainingInName(@PathVariable String firstName, @PathVariable String lastName) {
+        return UserListResponse.mapFromUserList(userService.findByFirstNameOrLastNameContaining(firstName, lastName));
     }
 
     @GetMapping("users")
-    public List<UserDto> getAllUsers() {
-        return userService.findAllUsers();
+    public UserListResponse getAllUsers() {
+        return UserListResponse.mapFromUserList(userService.findAllUsers());
     }
 }

@@ -43,7 +43,8 @@ public class UserService {
     @Transactional
     public void changePassword(Long userId, String newPassword, String oldPassword) {
         UserDto userDto = findUserById(userId);
-        if(!oldPassword.equals(userDto.getPassword())){
+
+        if (!passwordEncoder.matches(userDto.getPassword(), passwordEncoder.encode(oldPassword))) {
             throw new InvalidPasswordException();
         }
         userDto.setPassword(passwordEncoder.encode(newPassword));
