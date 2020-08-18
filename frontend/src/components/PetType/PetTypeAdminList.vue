@@ -27,7 +27,7 @@ export default {
         {
           key: 'name',
           label: 'Nazwa',
-          sortable: true
+          sortable: false
         },
         {
           key: 'tools',
