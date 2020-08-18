@@ -2,7 +2,7 @@
   <b-col cols="12" md="4" lg="2" class="margin-top">
     <span class="font-weight-bold">Administracja</span><br/>
     <a href="" @click.prevent="$router.push({name: 'PetAdmin'})">Zwierzęta</a><br/>
-    <a href="">Typy zwierząt</a><br/>
+    <a href="" @click.prevent="$router.push({name: 'PetTypesAdmin'})">Typy zwierząt</a><br/>
     <a href="">Schroniska</a><br/>
     <a href="">Aktualności</a><br/>
     <a href="">Użytkownicy</a><br/>

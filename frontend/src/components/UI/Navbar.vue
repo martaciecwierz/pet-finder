@@ -22,6 +22,7 @@
                         <em>Użytkownik</em>
                     </template>
                     <b-dropdown-item href="#">Profil użytkownika</b-dropdown-item>
+                    <b-dropdown-item href="#" @click.prevent="$router.push({name: 'PetAdmin'})">Administracja</b-dropdown-item>
                     <b-dropdown-item href="#">Wyloguj</b-dropdown-item>
                 </b-nav-item-dropdown>
             </b-navbar-nav>
