@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import PetList from '../views/Pets/PetList.vue'
 import SheltersList from "../views/Shelters/SheltersList";
+import PetAdmin from "@/views/Pets/PetAdmin";
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ Vue.use(VueRouter)
     path: '/pets',
     name: 'PetList',
     component: PetList
+  },
+  {
+    path: '/admin/pets',
+    name: 'PetAdmin',
+    component: PetAdmin
   },
   {
     path: '/shelters',
