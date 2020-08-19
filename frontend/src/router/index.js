@@ -5,6 +5,7 @@ import PetList from '../views/Pets/PetList.vue'
 import SheltersList from "../views/Shelters/SheltersList";
 import PetAdmin from "@/views/Pets/PetAdmin";
 import PetTypeAdmin from "@/views/PetTypes/PetTypeAdmin";
+import ActionTypeAdmin from "@/views/ActionTypes/ActionTypeAdmin";
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ Vue.use(VueRouter)
     path: '/admin/pet-types',
     name: 'PetTypesAdmin',
     component: PetTypeAdmin
+  },
+  {
+    path: '/admin/action-types',
+    name: 'ActionTypesAdmin',
+    component: ActionTypeAdmin
   },
   {
     path: '/shelters',
