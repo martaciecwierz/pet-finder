@@ -8,5 +8,7 @@
 - Administracyjna lista typów zwierząt (/admin/pet-types)
 - Administracyjna lista typów aktywności (/admin/action-types)
 - Administracyjna lista użytkowników (/admin/users)
+- Administracyjna lista artykułów (/admin/articles)
+- Administracyjna lista komentarzy (/admin/comments/:articleId)
 - Menu administracyjne
 

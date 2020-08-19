@@ -8,6 +8,7 @@ import PetTypeAdmin from "@/views/PetTypes/PetTypeAdmin";
 import ActionTypeAdmin from "@/views/ActionTypes/ActionTypeAdmin";
 import UserAdmin from "@/views/Users/UserAdmin";
 import ArticleAdmin from "@/views/Articles/ArticleAdmin";
+import CommentAdmin from "@/views/Comments/CommentAdmin";
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,11 @@ Vue.use(VueRouter)
     path: '/admin/articles',
     name: 'ArticleAdmin',
     component: ArticleAdmin
+  },
+  {
+    path: '/admin/comments/:articleId',
+    name: 'CommentAdmin',
+    component: CommentAdmin
   },
   {
     path: '/admin/pet-types',
