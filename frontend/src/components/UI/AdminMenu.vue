@@ -6,7 +6,7 @@
     <a href="" @click.prevent="$router.push({name: 'ActionTypesAdmin'})" :class="{active: $route.name==='ActionTypesAdmin'}">Typy aktywności</a><br/>
     <a href="">Schroniska</a><br/>
     <a href="">Aktualności</a><br/>
-    <a href="">Użytkownicy</a><br/>
+    <a href="" @click.prevent="$router.push({name: 'UserAdmin'})" :class="{active: $route.name==='UserAdmin'}">Użytkownicy</a><br/>
   </b-col>
 </template>
 
