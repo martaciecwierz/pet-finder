@@ -54,7 +54,8 @@ export default {
         {
           key: 'isAdmin',
           label: 'Administrator',
-          sortable: false
+          sortable: false,
+          class: 'text-center'
         },
         {
           key: 'tools',

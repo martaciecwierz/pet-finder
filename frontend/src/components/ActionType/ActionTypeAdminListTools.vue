@@ -13,7 +13,7 @@
 export default {
   name: 'ActionTypeAdminListTools',
   props: {
-    pet: Object
+    actionType: Object
   },
   data: function () {
     return {

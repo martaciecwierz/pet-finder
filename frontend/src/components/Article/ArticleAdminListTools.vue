@@ -1,6 +1,10 @@
 <template>
 <div class="tools">
         <span class="tools-button">
+            <a v-if="!article.isPublished" @click="console.log('Publish')" v-b-tooltip.hover :title="'Status publikacji - Nieopublikowany'"><b-icon-x/></a>
+            <a v-else @click="console.log('Publish')" v-b-tooltip.hover :title="'Status publikacji - Opublikowany'"><b-icon-check/></a>
+        </span>
+        <span class="tools-button">
             <a @click="console.log('Edit')" v-b-tooltip.hover :title="'Edytuj'"><b-icon-pencil/></a>
         </span>
         <span class="tools-button">
@@ -11,9 +15,9 @@
 
 <script>
 export default {
-  name: 'PetTypeAdminListTools',
+  name: 'ArticleAdminListTools',
   props: {
-    petType: Object
+    article: Object
   },
   data: function () {
     return {

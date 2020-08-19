@@ -5,7 +5,7 @@
     <a href="" @click.prevent="$router.push({name: 'PetTypesAdmin'})" :class="{active: $route.name==='PetTypesAdmin'}">Typy zwierząt</a><br/>
     <a href="" @click.prevent="$router.push({name: 'ActionTypesAdmin'})" :class="{active: $route.name==='ActionTypesAdmin'}">Typy aktywności</a><br/>
     <a href="">Schroniska</a><br/>
-    <a href="">Aktualności</a><br/>
+    <a href="" @click.prevent="$router.push({name: 'ArticleAdmin'})" :class="{active: $route.name==='ArticleAdmin'}">Aktualności</a><br/>
     <a href="" @click.prevent="$router.push({name: 'UserAdmin'})" :class="{active: $route.name==='UserAdmin'}">Użytkownicy</a><br/>
   </b-col>
 </template>

@@ -16,7 +16,7 @@
 export default {
   name: 'UserAdminListTools',
   props: {
-    pet: Object
+    user: Object
   },
   data: function () {
     return {
