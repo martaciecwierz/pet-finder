@@ -11,6 +11,7 @@ import com.example.petfinder.model.user.User;
 import com.example.petfinder.repository.UserRepository;
 import com.example.petfinder.validation.UserValidator;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,14 +21,18 @@ public class RegistrationService {
 
     private UserRepository userRepository;
     private ModelMapper modelMapper;
+    private PasswordEncoder passwordEncoder;
 
-    public RegistrationService(UserRepository userRepository, ModelMapper modelMapper) {
+    public RegistrationService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void registerUser(UserDto userDto){
         validateRegister(userDto);
+        userDto.setActive(true);
+        userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
         User user = modelMapper.map(userDto, User.class);
         userRepository.save(user);
     }
@@ -42,19 +47,19 @@ public class RegistrationService {
             throw new EmailConflictException(userDto.getEmail());
         }
 
-        if(UserValidator.isPasswordValid(userDto.getPassword())){
+        if (!UserValidator.isPasswordValid(userDto.getPassword())) {
             throw new PasswordIValidationException(userDto.getPassword().length());
         }
 
-        if(UserValidator.isFirstNameValid(userDto.getFirstName())){
+        if (!UserValidator.isFirstNameValid(userDto.getFirstName())) {
             throw new FirstNameValidationException(userDto.getFirstName());
         }
 
-        if(UserValidator.isLastNameValid(userDto.getLastName())){
+        if (!UserValidator.isLastNameValid(userDto.getLastName())) {
             throw new LastNameValidationException(userDto.getLastName());
         }
 
-        if(UserValidator.isEmailValid(userDto.getEmail())){
+        if (!UserValidator.isEmailValid(userDto.getEmail())) {
             throw new EmailValidationException(userDto.getEmail());
         }
 
