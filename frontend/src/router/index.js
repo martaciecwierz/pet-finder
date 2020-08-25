@@ -3,6 +3,12 @@ import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import PetList from '../views/Pets/PetList.vue'
 import SheltersList from "../views/Shelters/SheltersList";
+import PetAdmin from "@/views/Pets/PetAdmin";
+import PetTypeAdmin from "@/views/PetTypes/PetTypeAdmin";
+import ActionTypeAdmin from "@/views/ActionTypes/ActionTypeAdmin";
+import UserAdmin from "@/views/Users/UserAdmin";
+import ArticleAdmin from "@/views/Articles/ArticleAdmin";
+import CommentAdmin from "@/views/Comments/CommentAdmin";
 
 Vue.use(VueRouter)
 
@@ -21,6 +27,36 @@ Vue.use(VueRouter)
     path: '/pets',
     name: 'PetList',
     component: PetList
+  },
+  {
+    path: '/admin/pets',
+    name: 'PetAdmin',
+    component: PetAdmin
+  },
+  {
+    path: '/admin/articles',
+    name: 'ArticleAdmin',
+    component: ArticleAdmin
+  },
+  {
+    path: '/admin/comments/:articleId',
+    name: 'CommentAdmin',
+    component: CommentAdmin
+  },
+  {
+    path: '/admin/pet-types',
+    name: 'PetTypesAdmin',
+    component: PetTypeAdmin
+  },
+  {
+    path: '/admin/action-types',
+    name: 'ActionTypesAdmin',
+    component: ActionTypeAdmin
+  },
+  {
+    path: '/admin/users',
+    name: 'UserAdmin',
+    component: UserAdmin
   },
   {
     path: '/shelters',
