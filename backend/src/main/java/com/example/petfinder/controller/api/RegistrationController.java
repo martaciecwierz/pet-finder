@@ -24,6 +24,6 @@ public class RegistrationController {
     public ResponseEntity registerUser(@RequestBody RegisterUserRequest request){
         UserDto userDto = request.mapToUserDto();
         registrationService.registerUser(userDto);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(userDto, HttpStatus.OK);
     }
 }
