@@ -67,7 +67,7 @@
     .login-logo {
         width: 30%;
         height: auto;
-        margin-bottom: 10%;
+        margin-bottom: 5%;
         margin-top: 5%;
     }
 

@@ -10,7 +10,7 @@ mvn clean install
 ```
 ## Uruchomienie (port 8080)
 ```
-java -jar target/pet-finder-0.0.1-SNAPSHOT.jar
+java -jar target/pet-finder-0.2.0-SNAPSHOT.jar
 ```
 # Frontend
 (w katalogu frontend)
