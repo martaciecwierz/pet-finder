@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -19,4 +21,11 @@ public class AnimalType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "animalType_attribute",
+            joinColumns = {@JoinColumn(name = "type_id")},
+            inverseJoinColumns = {@JoinColumn(name = "attribute_id")}
+    )
+    private Set<Attribute> attributes = new HashSet<>();
 }
