@@ -5,8 +5,8 @@
                 <div class="login-panel">
           <span class="login-form-background">
             <img class="login-logo" src="../assets/logo.png">
-            <login-form v-if="mode === 0"/>
-            <register-form v-if="mode === 1"/>
+            <login-form ref="loginForm" :username="user.username" v-if="mode === 0"/>
+            <register-form v-if="mode === 1" @registered="registered"/>
             <password-form v-if="mode === 2"/>
               <div class="login-footer">
                   <a href="#" v-if="mode === 0 || mode === 2" @click.prevent="selectMode(1)">Zarejestruj się</a>
@@ -38,12 +38,19 @@
         data: function () {
             return {
                 mode: 0, //0=login, 1=rejestracja, 2= przypomnienie hasła
+                user: {
+                  username: null,
+                }
         }
         },
         methods:{
             selectMode(mode){
                 this.mode = mode
-            }
+            },
+          registered: function(username){
+              this.user.username = username
+              this.mode = 0;
+          }
         }
     }
 </script>

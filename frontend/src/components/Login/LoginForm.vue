@@ -15,6 +15,9 @@
 <script>
     export default {
         name: 'LoginForm',
+        props: {
+          username: String
+        },
         data: function(){
             return {
                 user: {
@@ -22,7 +25,17 @@
                     password: ""
                 }
             }
-        }
+        },
+      methods:{
+          setUsername: function (){
+            console.log(this.$props.username)
+            this.user.username = this.$props.username
+          }
+      },
+      mounted: function (){
+          console.log('mounted')
+          this.setUsername()
+      }
     }
 </script>
 
