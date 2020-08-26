@@ -1,4 +1,11 @@
 ## 0.2.0
+####Frontend
+- Możliwość rejestracji + dodanie walidacji (integracja z API)
+- Możliwość logowania 
+####Backend
+- Api logowania i rejestracji
+- Dodanie atrybutów typów zwierząt
+- Dodawanie schroniska i typów zwierząt
 
 ## 0.1.0
 - Logowanie, rejestracja, przypomnienie hasła
