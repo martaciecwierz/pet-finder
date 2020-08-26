@@ -1,3 +1,7 @@
+## 0.2.1
+####Frontend
+- Zmiany w widoku logowania i rejestracji
+
 ## 0.2.0
 ####Frontend
 - Możliwość rejestracji + dodanie walidacji (integracja z API)
