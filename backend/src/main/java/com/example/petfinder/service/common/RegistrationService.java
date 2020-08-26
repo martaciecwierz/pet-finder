@@ -29,12 +29,12 @@ public class RegistrationService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void registerUser(UserDto userDto){
+    public UserDto registerUser(UserDto userDto) {
         validateRegister(userDto);
         userDto.setActive(true);
         userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
         User user = modelMapper.map(userDto, User.class);
-        userRepository.save(user);
+        return modelMapper.map(userRepository.save(user), UserDto.class);
     }
 
     private void validateRegister(UserDto userDto){

@@ -18,6 +18,6 @@ public class WebConfiguration {
 
     @Bean(initMethod = "start", destroyMethod = "stop")
     public Server h2WebConsoleServer() throws SQLException {
-        return Server.createWebServer("-web", "-webAllowOthers", "-webDaemon", "-webPort", "1234");
+        return Server.createWebServer("-web", "-webAllowOthers", "-webDaemon", "-webPort", "12345");
     }
 }

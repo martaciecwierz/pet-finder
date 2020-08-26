@@ -1,6 +1,7 @@
 package com.example.petfinder.controller.api;
 
 import com.example.petfinder.controller.request.RegisterUserRequest;
+import com.example.petfinder.controller.response.UserResponse;
 import com.example.petfinder.dto.user.UserDto;
 import com.example.petfinder.service.common.RegistrationService;
 import org.springframework.http.HttpStatus;
@@ -21,9 +22,8 @@ public class RegistrationController {
     }
 
     @PostMapping("register")
-    public ResponseEntity registerUser(@RequestBody RegisterUserRequest request){
+    public UserResponse registerUser(@RequestBody RegisterUserRequest request) {
         UserDto userDto = request.mapToUserDto();
-        registrationService.registerUser(userDto);
-        return new ResponseEntity(userDto, HttpStatus.OK);
+        return UserResponse.mapFromUserDto(registrationService.registerUser(userDto));
     }
 }
