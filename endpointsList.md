@@ -10,8 +10,8 @@ PUT api/user/password
 Request:
 ```
 {
-	newPassword: newPassword,
-	oldPassword: oldPassword
+	newPassword: string,
+	oldPassword: string
 }
 ```
 
@@ -23,19 +23,19 @@ PUT api/user/profile
 Request
 ```
 {
-	firstname: NewFirstname,
-	lastname: NewLastname,
-	email: NewEmail
+	firstname: string,
+	lastname: string,
+	email: string
 }
 ```
 Response
 ```
 {
-	id: userId,
-	username: username,
-	firstName: firstName,
-	lastName: lastName,
-	email: email
+	id: long,
+	username: string,
+	firstName: string,
+	lastName: string,
+	email: string
 }
 ```
 
@@ -54,11 +54,11 @@ GET api/user/profile
 Response
 ```
 {
-	id: userId,
-	username: username,
-	firstName: firstName,
-	lastName: lastName,
-	email: email
+	id: long,
+	username: string,
+	firstName: string,
+	lastName: string,
+	email: string
 }
 ```
 
@@ -71,11 +71,11 @@ GET api/user/{userId}
 Response
 ```
 {
-	id: userId,
-	username: username,
-	firstName: firstName,
-	lastName: lastName,
-	email: email
+	id: long,
+	username: string,
+	firstName: string,
+	lastName: string,
+	email: string
 }
 ```
 
@@ -88,11 +88,11 @@ GET api/user/email/{email}
 Response
 ```
 {
-	id: userId,
-	username: username,
-	firstName: firstName,
-	lastName: lastName,
-	email: email
+	id: long,
+	username: string,
+	firstName: string,
+	lastName: string,
+	email: string
 }
 ```
 
@@ -107,11 +107,11 @@ Response
 {
 	userResponseList: 
 	[
-		id: userId,
-		username: username,
-		firstName: firstName,
-		lastName: lastName,
-		email: email 
+		id: long,
+		username: string,
+		firstName: string,
+		lastName: string,
+		email: string 
 	]
 }
 ```
@@ -127,15 +127,15 @@ GET api/shelter/{id}
 Response
 ```
 {
-	id: shelterId,
-    name: name,
-    addressStreet: addressStreet,
-    addressBuilding: addressBuilding,
-    addressCity: addressCity,
-    addressPostCode: addressPostCode,
-    email: email,
-    phone: phone,
-    description: description 
+	id: long,
+    name: string,
+    addressStreet: string,
+    addressBuilding: string,
+    addressCity: string,
+    addressPostCode: string,
+    email: string,
+    phone: string,
+    description: string 
 }
 ```
 
@@ -148,29 +148,51 @@ POST api/shelter
 Request
 ```
 {
-    name: name,
-    addressStreet: addressStreet,
-    addressBuilding: addressBuilding,
-    addressCity: addressCity,
-    addressPostCode: addressPostCode,
-    email: email,
-    phone: phone,
-    description: description 
+    name: string,
+    addressStreet: string,
+    addressBuilding: string,
+    addressCity: string,
+    addressPostCode: string,
+    email: string,
+    phone: string,
+    description: string  
 }
+```
+
+
+Response
+```
+{
+	id: long,
+    name: string,
+    addressStreet: string,
+    addressBuilding: string,
+    addressCity: string,
+    addressPostCode: string,
+    email: string,
+    phone: string,
+    description: string 
+}
+```
+
+### get shelter by city
+
+```
+GET api/shelter/city/{city}
 ```
 
 Response
 ```
 {
-	id: shelterId,
-    name: name,
-    addressStreet: addressStreet,
-    addressBuilding: addressBuilding,
-    addressCity: addressCity,
-    addressPostCode: addressPostCode,
-    email: email,
-    phone: phone,
-    description: description 
+	id: long,
+    name: string,
+    addressStreet: string,
+    addressBuilding: string,
+    addressCity: string,
+    addressPostCode: string,
+    email: string,
+    phone: string,
+    description: string 
 }
 ```
 
@@ -186,13 +208,13 @@ GET api/animalType/{id}
 Response
 ```
 {
-	id: animalTypeId,
-	name: animalTypeName,
+	id: long,
+	name: string,
 	attributes: 
 	[
-		id: attributeId,
-		name: attributeName,
-		type: attributeType
+		id: long,
+		name: string,
+		type: string
 	]
 }
 ```
@@ -209,7 +231,7 @@ Request
 	name: name,
 	attributesIds:
 	[
-		attributeId
+		attributeId: long
 	]
 }
 ```
@@ -217,13 +239,41 @@ Request
 Response
 ```
 {
-	id: animalTypeId,
-	name: animalTypeName,
+	id: long,
+	name: string,
 	attributes: 
 	[
-		id: attributeId,
-		name: attributeName,
-		type: attributeType
+		id: long,
+		name: string,
+		type: string
+	]
+}
+```
+
+### add attribute to animalType
+
+```
+PUT api/animalType/attribute
+```
+
+Request
+```
+{
+	attributeId: long,
+	animalTypeId: long
+}
+```
+
+Response
+```
+{
+	id: long,
+	name: string,
+	attributes: 
+	[
+		id: long,
+		name: string,
+		type: string
 	]
 }
 ```
@@ -239,9 +289,9 @@ GET api/attribute/{id}
 Response
 ```
 {
-	id: attributeId,
-	name: name,
-	type: type
+	id: long,
+	name: string,
+	type: string
 }
 ```
 
@@ -254,16 +304,16 @@ Request
 
 ```
 {
-	name: name,
-	type: type
+	name: string,
+	type: string
 }
 ```
 Response
 ```
 {
-	id: attributeId,
-	name: name,
-	type: type
+	id: long,
+	name: string,
+	type: string
 }
 ```
 
@@ -284,9 +334,9 @@ POST api/animalAttribute
 Request:
 ```
 {
-	animalId: animalId,
-	attributeId: attributeId,
-	value: value
+	animalId: long,
+	attributeId: string,
+	value: string
 }
 ```
 
@@ -299,11 +349,11 @@ GET api/animal/{animalId}
 Response:
 ```
 {
-	id: animal_id,
-	name: animal_name,
-	descriprion: animal_description,
-	typeId: animalTypeId,
-	shelterId: shelterId
+	id: long,
+	name: string,
+	descriprion: string,
+	typeId: long,
+	shelterId: long
 }
 ```
 
@@ -314,10 +364,10 @@ POST api/animal
 Request:
 ```
 {
-	name: animal_name,
-	shelterId: shelterId,
-	typeId: animalTypeId,
-	description: animal_description
+	name: string,
+	shelterId: long,
+	typeId: long,
+	description: string
 }
 ```
 
@@ -329,19 +379,19 @@ PUT api/animal
 Request:
 ```
 {
-	id: animal_id,
-	name: animal_name,
-	description: animal_description
+	id: long,
+	name: string,
+	description: string
 }
 ```
 Response:
 ```
 {
-	id: animal_id,
-	name: animal_name,
-	description: animal_description,
-	typeId: animalTypeId,
-	shelterId: shelterId
+	id: long,
+	name: string,
+	description: string,
+	typeId: long,
+	shelterId: long
 }
 ```
 
@@ -355,11 +405,11 @@ Response:
 	typeId: animalTypeId,
 	animalResponseList: 
 		[
-			id: animal_id,
-			name: animal_name,
-			description: animal_description,
-			typeId: animalTypeId,
-			shelterId: shelterId
+			id: long,
+			name: string,
+			description: string,
+			typeId: long,
+			shelterId: long
 		]
 }
 ```
@@ -374,11 +424,11 @@ Response:
 	shelterId: shelterId,
 	animalResponseList: 
 		[
-			id: animal_id,
-			name: animal_name,
-			description: animal_description,
-			typeId: animalTypeId,
-			shelterId: shelterId
+			id: long,
+			name: string,
+			description: string,
+			typeId: long,
+			shelterId: long
 		]
 }
 ```
@@ -398,9 +448,9 @@ POST api/article
 Request:
 ```
 {
-	shelterId: shelterId,
+	shelterId: long,
 	date: date,
-	title: title,
-	content: content
+	title: string,
+	content: string
 }
 ```

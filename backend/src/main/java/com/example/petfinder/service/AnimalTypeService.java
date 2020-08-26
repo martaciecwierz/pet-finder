@@ -3,6 +3,7 @@ package com.example.petfinder.service;
 import com.example.petfinder.controller.request.AddAnimalTypeRequest;
 import com.example.petfinder.dto.animal.AnimalTypeDto;
 import com.example.petfinder.error.exception.notFound.AnimalTypeNotFoundException;
+import com.example.petfinder.error.exception.notFound.ArticleNotFoundException;
 import com.example.petfinder.model.animal.AnimalType;
 import com.example.petfinder.model.animal.Attribute;
 import com.example.petfinder.repository.AnimalTypeRepository;
@@ -40,6 +41,16 @@ public class AnimalTypeService {
                 .stream(attributeRepository.findAllById(addAnimalTypeRequest.getAttributesIds()).spliterator(), false)
                 .collect(Collectors.toSet());
         AnimalType animalType = AnimalType.builder().name(addAnimalTypeRequest.getName()).attributes(attributes).build();
+        return modelMapper.map(animalTypeRepository.save(animalType), AnimalTypeDto.class);
+    }
+
+    @Transactional
+    public AnimalTypeDto addAttributeToAnimalType(Long attributeId, Long animalTypeId) {
+        Attribute attribute = attributeRepository.findById(attributeId)
+                .orElseThrow(() -> new ArticleNotFoundException(attributeId));
+        AnimalType animalType = animalTypeRepository.findById(animalTypeId)
+                .orElseThrow(() -> new AnimalTypeNotFoundException(animalTypeId));
+        animalType.getAttributes().add(attribute);
         return modelMapper.map(animalTypeRepository.save(animalType), AnimalTypeDto.class);
     }
 }
