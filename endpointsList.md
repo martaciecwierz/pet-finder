@@ -382,3 +382,25 @@ Response:
 		]
 }
 ```
+
+## Article
+
+### get article by id
+```
+GET api/article/{id}
+```
+
+### add article
+```
+POST api/article
+```
+
+Request:
+```
+{
+	shelterId: shelterId,
+	date: date,
+	title: title,
+	content: content
+}
+```

@@ -1,13 +1,19 @@
 package com.example.petfinder.model.article;
 
 import com.example.petfinder.model.shelter.Shelter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Article {
 
     @Id
