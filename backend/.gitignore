@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+## Local properties ###
+src/main/resources/application-LOCAL.properties
+
 ### STS ###
 .apt_generated
 .classpath

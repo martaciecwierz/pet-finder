@@ -5,16 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AnimalTypeDto {
+public class AnimalAttributeDto {
 
     private Long id;
-    private String name;
-    private Set<AttributeDto> attributes = new HashSet<>();
+    private AnimalDto animalDto;
+    private AttributeDto attributeDto;
+    private String value;
 }

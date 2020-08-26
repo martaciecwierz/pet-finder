@@ -18,8 +18,12 @@ public static boolean isLastNameValid(String lastName){
 }
 
 public static boolean isEmailValid(String email){
-    String regex = "^[a-zA-Z0-9_+&*-]+(?:\\\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,7}$";
-    Pattern pattern = Pattern.compile(regex);
-    return pattern.matcher(email).matches();
+//    String regex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$";
+//    Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+//    return pattern.matcher(email).find();
+    Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+    Matcher matcher = pattern.matcher(email);
+    return matcher.find();
+
 }
 }

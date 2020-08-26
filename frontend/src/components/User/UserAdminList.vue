@@ -1,9 +1,9 @@
 <template>
   <b-col cols="12" md="8" lg="10" class="text-left">
-    <h4>Zarządzanie rodzajami aktywności</h4>
+    <h4>Zarządzanie Użytkownikami</h4>
     <b-table striped
              hover
-             :items="types"
+             :items="users"
              :fields="fields"
              :columns="fields">
       <template v-slot:cell(tools)="data">
@@ -63,7 +63,7 @@ export default {
           sortable: false
         },
       ],
-      types: [{
+      users: [{
         id: 1,
         username: "siuchninski.t",
         firstName: "Tomasz",

@@ -1,16 +1,21 @@
 package com.example.petfinder.security;
 
+import com.example.petfinder.config.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -21,17 +26,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private RestAccessDeniedHandler restAccessDeniedHandler;
     private UrlAuthenticationSuccessHandler urlAuthenticationSuccessHandler;
     private SimpleUrlAuthenticationFailureHandler failureHandler = new SimpleUrlAuthenticationFailureHandler();
+    private JwtFilter jwtFilter;
 
     @Autowired
     public SecurityConfiguration(UserDetailsServiceImpl userDetailService,
                                  RestAuthenticationEntryPoint restAuthenticationEntryPoint,
                                  RestAccessDeniedHandler restAccessDeniedHandler,
-                                 UrlAuthenticationSuccessHandler urlAuthenticationSuccessHandler) {
+                                 UrlAuthenticationSuccessHandler urlAuthenticationSuccessHandler, JwtFilter jwtFilter) {
 
         this.userDetailService = userDetailService;
         this.restAuthenticationEntryPoint = restAuthenticationEntryPoint;
         this.restAccessDeniedHandler = restAccessDeniedHandler;
         this.urlAuthenticationSuccessHandler = urlAuthenticationSuccessHandler;
+        this.jwtFilter = jwtFilter;
     }
 
     @Bean
@@ -49,26 +56,33 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
         http.csrf().disable()
-                .authorizeRequests()
+                .authorizeRequests().antMatchers("/api/register", "/login").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .exceptionHandling()
                 .accessDeniedHandler(restAccessDeniedHandler)
                 .authenticationEntryPoint(restAuthenticationEntryPoint)
                 .and()
-                .authorizeRequests()
-                .antMatchers("/api/admin").hasRole("ADMIN")
-                .antMatchers("/api/**").authenticated()
-                .and()
-                .formLogin()
-                .successHandler(urlAuthenticationSuccessHandler)
-                .failureHandler(failureHandler)
-                .and()
-                .logout();
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        //               .and()
+//                .formLogin()
+//               .successHandler(urlAuthenticationSuccessHandler)
+//                .failureHandler(failureHandler)
+        //         .and()
+        //               .logout();
+        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 }

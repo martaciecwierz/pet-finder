@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -32,5 +33,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userRepository.findByUsername(s)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return new AppUserPrincipal(user);
+//        if("user".equals(s)){
+//            return new AppUserPrincipal(User.builder().id(1L).username("user").password("$2a$10$DiFd8WP/ew/OO6mccRFYXuiM6.4RWArO413LkzCpBu1KDqGddL4b.").build());// user:pass
+//        }
+//        else{
+//            throw new UsernameNotFoundException("user not found");
+//        }
     }
 }

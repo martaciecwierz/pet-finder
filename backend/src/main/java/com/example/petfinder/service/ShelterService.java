@@ -25,4 +25,19 @@ public class ShelterService {
                 .orElseThrow(() -> new ShelterNotFoundException(shelterId));
         return modelMapper.map(shelter, ShelterDto.class);
     }
+
+    @Transactional
+    public ShelterDto addShelter(ShelterDto shelterDto) {
+        Shelter shelter = Shelter.builder()
+                .name(shelterDto.getName())
+                .addressStreet(shelterDto.getAddressStreet())
+                .addressBuilding(shelterDto.getAddressBuilding())
+                .addressCity(shelterDto.getAddressCity())
+                .addressPostCode(shelterDto.getAddressPostCode())
+                .email(shelterDto.getEmail())
+                .phone(shelterDto.getPhone())
+                .description(shelterDto.getDescription())
+                .build();
+        return modelMapper.map(shelterRepository.save(shelter), ShelterDto.class);
+    }
 }
