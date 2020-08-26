@@ -81,8 +81,8 @@
         background-image: url("/login_background.jpg");
 
         /* Add the blur effect */
-        filter: blur(40px);
-        -webkit-filter: blur(40px);
+        filter: blur(50px);
+        -webkit-filter: blur(50px);
 
         /* Full height */
         height: 100%;

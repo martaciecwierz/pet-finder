@@ -34,6 +34,7 @@
   </div>
         <div v-else class="login-page">
             <div class="background"></div>
+            <div class="background2"></div>
             <router-view/>
         </div>
   </div>
@@ -81,8 +82,8 @@
         background-image: url("/login_background.jpg");
 
         /* Add the blur effect */
-        filter: blur(40px);
-        -webkit-filter: blur(40px);
+        filter: blur(20px);
+        -webkit-filter: blur(20px);
 
         /* Full height */
         height: 100%;
@@ -97,13 +98,11 @@
         background-image: url("/login_background.jpg");
 
         position: absolute;
-        top:5vh;
-
-        filter: ;
+        top:0;
 
         /* Full height */
-        height: 90vh;
-        width: 90vw;
+        height: 100vh;
+        width: 100vw;
         /* Center and scale the image nicely */
         background-position: center;
         background-repeat: no-repeat;
