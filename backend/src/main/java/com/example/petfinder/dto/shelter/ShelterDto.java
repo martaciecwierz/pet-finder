@@ -1,8 +1,12 @@
 package com.example.petfinder.dto.shelter;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@NoArgsConstructor
 public class ShelterDto {
 
     private long id;
