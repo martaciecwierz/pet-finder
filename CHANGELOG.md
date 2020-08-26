@@ -1,3 +1,7 @@
+## 0.2.0
+- Możliwość rejestracji + dodanie walidacji (integracja z API)
+
+
 ## 0.1.0
 - Logowanie, rejestracja, przypomnienie hasła
 - Szablon strony

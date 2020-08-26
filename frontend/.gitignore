@@ -12,6 +12,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Local api config
+/src/config/override.js
+
+
 # Editor directories and files
 .idea
 .vscode
