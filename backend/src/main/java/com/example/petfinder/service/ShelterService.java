@@ -8,6 +8,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Transactional(readOnly = true)
 public class ShelterService {
@@ -24,6 +27,12 @@ public class ShelterService {
         Shelter shelter = shelterRepository.findById(shelterId)
                 .orElseThrow(() -> new ShelterNotFoundException(shelterId));
         return modelMapper.map(shelter, ShelterDto.class);
+    }
+
+    public List<ShelterDto> findShelterByCity(String city) {
+        return shelterRepository.findByAddressCityContaining(city).stream()
+                .map(shelter -> modelMapper.map(shelter, ShelterDto.class))
+                .collect(Collectors.toList());
     }
 
     @Transactional
