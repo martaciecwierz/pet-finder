@@ -4,16 +4,16 @@
       <div class="register-header">Rejestracja</div>
       <ValidationObserver :key="0" v-if="step === 0">
         <b-form-group>
-          <ValidationProvider rules="required" v-slot="v">
+          <ValidationProvider name="Nazwa użytkownika" rules="required" v-slot="v">
             <b-form-input v-model="user.username" id="username" size="sm"
-                          placeholder="Nazwa użytkownika"></b-form-input>
+                          placeholder="Nazwa użytkownika" v-on:keyup.enter="nextStep"></b-form-input>
             <div class="validation-error">{{ v.errors[0] }}</div>
           </ValidationProvider>
         </b-form-group>
         <b-form-group>
           <ValidationProvider name="Adres e-mail" rules="required|email" v-slot="v">
             <b-form-input v-model="user.email" id="email" type="email" placeholder="Adres e-mail"
-                          size="sm"></b-form-input>
+                          size="sm" v-on:keyup.enter="nextStep"></b-form-input>
             <div class="validation-error">{{ v.errors[0] }}</div>
           </ValidationProvider>
         </b-form-group>
@@ -22,13 +22,13 @@
       <ValidationObserver :key="1" v-else-if="step === 1">
         <b-form-group>
           <ValidationProvider name="Imię" rules="required|min:3" v-slot="v">
-            <b-form-input v-model="user.firstName" id="firstName" size="sm" placeholder="Imię"></b-form-input>
+            <b-form-input v-model="user.firstName" id="firstName" size="sm" placeholder="Imię" ref="firstName" v-on:keyup.enter="nextStep"></b-form-input>
             <div class="validation-error">{{ v.errors[0] }}</div>
           </ValidationProvider>
         </b-form-group>
         <b-form-group>
           <ValidationProvider name="Nazwisko" rules="required" v-slot="v">
-            <b-form-input v-model="user.lastName" id="lastName" placeholder="Nazwisko" size="sm"></b-form-input>
+            <b-form-input v-model="user.lastName" id="lastName" placeholder="Nazwisko" size="sm"  v-on:keyup.enter="nextStep"></b-form-input>
             <div class="validation-error">{{ v.errors[0] }}</div>
           </ValidationProvider>
         </b-form-group>
@@ -38,14 +38,14 @@
         <b-form-group>
           <ValidationProvider name="hasło" rules="required|min:8" v-slot="v">
             <b-form-input v-model="user.password" id="password" type="password" size="sm"
-                          placeholder="Hasło"></b-form-input>
+                          placeholder="Hasło" v-on:keyup.enter="submit"  ref="password"></b-form-input>
             <div class="validation-error">{{ v.errors[0] }}</div>
           </ValidationProvider>
         </b-form-group>
         <b-form-group>
           <ValidationProvider name="potwierdź hasło" rules="required|min:8" v-slot="v">
             <b-form-input v-model="user.confirmPassword" id="confirm-password" type="password"
-                          placeholder="Potwierdź hasło" size="sm"></b-form-input>
+                          placeholder="Potwierdź hasło" size="sm" v-on:keyup.enter="submit"></b-form-input>
             <div class="validation-error">{{ v.errors[0] }}</div>
             <div class="validation-error" >{{ passwordError }}</div>
           </ValidationProvider>
@@ -83,6 +83,7 @@ export default {
     return {
       apiError: null,
       passwordError: "",
+      focus: false,
       user: {
         username: "",
         firstName: "",
@@ -130,6 +131,7 @@ export default {
           return;
         }
         vm.step++
+        vm.focus = true;
         vm.$refs.form.reset()
       });
 
@@ -143,6 +145,17 @@ export default {
   mounted: function () {
     this.step = 0
     this.passwordError = ""
+  },
+  updated: function(){
+    if(this.focus){
+      this.focus = false
+      if(this.$refs.firstName) {
+        this.$refs.firstName.focus()
+      }
+      if(this.$refs.password) {
+        this.$refs.password.focus()
+      }
+    }
   }
 }
 </script>
