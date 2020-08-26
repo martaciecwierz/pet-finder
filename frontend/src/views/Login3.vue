@@ -60,9 +60,7 @@
     }
 
     .login-footer {
-        font-size: 0.9em;
-        position: absolute;
-        width: 100%;
+        font-size: 0.5em;
         bottom: 10px;
     }
 
@@ -97,6 +95,7 @@
     }
 
     .bg-image{
+        visibility: hidden;
     }
 
     .login {
@@ -108,10 +107,6 @@
         z-index: 2;
         width: 80%;
         text-align: center;
-    }
-
-    .login-footer a{
-        white-space: nowrap;
     }
 </style>
 <style scoped>
