@@ -2,6 +2,7 @@
   <b-col cols="12" md="4" lg="2" class="margin-top">
     <span class="font-weight-bold">Administracja</span><br/>
     <a href="" @click.prevent="$router.push({name: 'PetAdmin'})" :class="{active: $route.name==='PetAdmin'}">Zwierzęta</a><br/>
+    <a href="" @click.prevent="$router.push({name: 'AttributesAdmin'})" :class="{active: $route.name==='AttributesAdmin'}">Atrybuty zwierząt</a><br/>
     <a href="" @click.prevent="$router.push({name: 'PetTypesAdmin'})" :class="{active: $route.name==='PetTypesAdmin'}">Typy zwierząt</a><br/>
     <a href="" @click.prevent="$router.push({name: 'ActionTypesAdmin'})" :class="{active: $route.name==='ActionTypesAdmin'}">Typy aktywności</a><br/>
     <a href="">Schroniska</a><br/>

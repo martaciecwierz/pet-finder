@@ -56,7 +56,7 @@ Vue.use(VueRouter)
   },
   {
     path: '/admin/attributes',
-    name: 'AtributesAdmin',
+    name: 'AttributesAdmin',
     component: AttributeAdmin
   },
   {
