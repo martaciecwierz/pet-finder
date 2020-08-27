@@ -1,20 +1,20 @@
 <template>
   <b-row cols="12" class="admin">
     <admin-menu/>
-    <action-type-admin-list/>
+    <attribute-admin-list/>
   </b-row>
 </template>
 
 <script>
 import AdminMenu from "@/components/UI/AdminMenu";
-import ActionTypeAdminList from "@/components/ActionType/ActionTypeAdminList";
+import AttributeAdminList from "@/components/Attribute/AttributeAdminList";
 
 export default {
   components: {
-    ActionTypeAdminList,
+      AttributeAdminList,
     AdminMenu
   },
-  name: 'ActionTypeAdmin',
+  name: 'AttributeAdmin',
   data: function () {
     return {}
   }

@@ -3,6 +3,7 @@
     <h4>Zarządzanie Aktualnościami</h4>
     <b-table striped
              hover
+             responsive
              :items="articles"
              :fields="fields"
              :columns="fields">

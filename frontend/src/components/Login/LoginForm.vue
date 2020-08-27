@@ -1,5 +1,5 @@
 <template>
-  <ValidationObserver :key="'registerObserver'" ref="form">
+  <ValidationObserver :key="'loginObserver'" ref="form">
     <div class="register-header">Logowanie</div>
     <b-form class="text-center login-page-form">
       <span v-if="!isSubmitted">
@@ -36,12 +36,16 @@
 <script>
 import axiosInstance from "@/tools/axiosInstance";
 import apiConfig from "@/apiConfig";
+import requestHeaders from "@/tools/requestHeaders";
 
 export default {
   name: 'LoginForm',
   props: {
     username: String
   },
+    mixins: [
+        requestHeaders
+    ],
   data: function () {
     return {
       isSubmitted: false,

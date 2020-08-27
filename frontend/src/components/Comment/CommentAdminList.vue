@@ -3,6 +3,7 @@
     <h4>Zarządzanie Komentarzami - {{article.name}}</h4>
     <b-table striped
              hover
+             responsive
              :items="comments"
              :fields="fields"
              :columns="fields">

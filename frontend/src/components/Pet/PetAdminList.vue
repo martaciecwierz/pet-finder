@@ -3,6 +3,7 @@
     <h4>Zarządzanie zwierzętami</h4>
     <b-table striped
              hover
+             responsive
              :items="pets"
              :fields="fields"
              :columns="fields">

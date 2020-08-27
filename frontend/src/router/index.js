@@ -5,6 +5,7 @@ import PetList from '../views/Pets/PetList.vue'
 import SheltersList from "../views/Shelters/SheltersList";
 import PetAdmin from "@/views/Pets/PetAdmin";
 import PetTypeAdmin from "@/views/PetTypes/PetTypeAdmin";
+import AttributeAdmin from "@/views/Attributes/AttributeAdmin";
 import ActionTypeAdmin from "@/views/ActionTypes/ActionTypeAdmin";
 import UserAdmin from "@/views/Users/UserAdmin";
 import ArticleAdmin from "@/views/Articles/ArticleAdmin";
@@ -47,6 +48,11 @@ Vue.use(VueRouter)
     path: '/admin/pet-types',
     name: 'PetTypesAdmin',
     component: PetTypeAdmin
+  },
+  {
+    path: '/admin/attributes',
+    name: 'AtributesAdmin',
+    component: AttributeAdmin
   },
   {
     path: '/admin/action-types',

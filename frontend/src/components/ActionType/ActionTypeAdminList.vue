@@ -3,6 +3,7 @@
     <h4>Zarządzanie rodzajami aktywności</h4>
     <b-table striped
              hover
+             responsive
              :items="types"
              :fields="fields"
              :columns="fields">
