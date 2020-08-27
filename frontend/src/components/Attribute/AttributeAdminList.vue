@@ -57,23 +57,7 @@
                         sortable: false
                     },
                 ],
-                attributes: [{
-                    id: 1,
-                    name: "Kolor",
-                    type: "String"
-                }, {
-                    id: 2,
-                    name: "Wiek",
-                    type: "String"
-                }, {
-                    id: 3,
-                    name: "Odrobaczony",
-                    type: "Boolean"
-                }, {
-                    id: 4,
-                    name: "Waga (kg)",
-                    type: "Float"
-                },]
+                attributes: []
             }
         },
         methods: {
