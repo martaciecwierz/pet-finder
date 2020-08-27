@@ -1,3 +1,9 @@
+
+## 0.3.0
+- Możliwość dodawania  Atrybutów zwierząt
+- Administracyjna lista atrybutów
+
+
 ## 0.2.0
 ####Frontend
 - Możliwość rejestracji + dodanie walidacji (integracja z API)
