@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
+import Logout from '../views/Logout.vue'
 import PetList from '../views/Pets/PetList.vue'
 import SheltersList from "../views/Shelters/SheltersList";
 import PetAdmin from "@/views/Pets/PetAdmin";
@@ -18,6 +19,10 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: SheltersList
+  },{
+    path: '/logout',
+    name: 'Logout',
+    component: Logout
   },
   {
     path: '/login',

@@ -16,16 +16,20 @@
                     <b-dropdown-item v-for="shelter in shelters" v-bind:key="shelter.id" href="#">{{shelter.name}}</b-dropdown-item>
                 </b-nav-item-dropdown>
 
-                <b-nav-item-dropdown right>
+                <b-nav-item-dropdown right v-if="isLogged()">
                     <template v-slot:button-content>
                         <b-icon-person></b-icon-person>
-                        <em>Użytkownik</em>
+                        <em>{{ getUsername() }}</em>
                     </template>
                     <b-dropdown-item href="#">Profil użytkownika</b-dropdown-item>
                     <b-dropdown-item href="#" @click.prevent="$router.push({name: 'PetAdmin'})">Administracja</b-dropdown-item>
-                    <b-dropdown-item href="#">Wyloguj</b-dropdown-item>
+                    <b-dropdown-item href="#" @click.prevent="logout">Wyloguj</b-dropdown-item>
                 </b-nav-item-dropdown>
+                <b-nav-item href="#" v-else @click.prevent="$router.push({name: 'Login'})">Logowanie / Rejestracja</b-nav-item>
+
             </b-navbar-nav>
+
+
         </b-collapse>
     </b-navbar>
 </template>
@@ -50,6 +54,22 @@
                         name: "Schronisko 3"
                     }
                 ]
+            }
+        },
+        methods: {
+            isLogged: function(){
+                if(localStorage.getItem("token")){
+                    return true;
+                }
+                return false;
+            },
+            logout: function(){
+                localStorage.removeItem("token")
+                localStorage.removeItem("username")
+                this.$router.push({name: 'Logout'})
+            },
+            getUsername: function(){
+                return localStorage.getItem("username")
             }
         }
     }
