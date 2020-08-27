@@ -8,6 +8,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 @Service
 @Transactional(readOnly = true)
 public class AttributeService {
@@ -38,5 +42,11 @@ public class AttributeService {
         dto.setType(attributeDto.getType());
         Attribute attribute = modelMapper.map(dto, Attribute.class);
         return modelMapper.map(attributeRepository.save(attribute), AttributeDto.class);
+    }
+
+    public List<AttributeDto> findAllAttributes() {
+        return StreamSupport.stream(attributeRepository.findAll().spliterator(), false)
+                .map(attribute -> modelMapper.map(attribute, AttributeDto.class))
+                .collect(Collectors.toList());
     }
 }

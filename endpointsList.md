@@ -317,6 +317,12 @@ Response
 }
 ```
 
+### get all attributes
+
+```
+GET api/attributes
+```
+
 ## AnimalAttribute
 
 ### get animalAttribute by id
