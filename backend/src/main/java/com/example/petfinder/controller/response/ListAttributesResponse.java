@@ -6,11 +6,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class ListAttributesResponse {
 
-    List<AttributeDto> attributes;
+    List<AttributeResponse> attributes;
+
+    public ListAttributesResponse(List<AttributeDto> attributes) {
+        this.attributes = attributes.stream()
+                .map(attribute -> new AttributeResponse(attribute.getId(), attribute.getName(), attribute.getType()))
+                .collect(Collectors.toList());
+    }
 }

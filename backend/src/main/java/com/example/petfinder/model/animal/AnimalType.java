@@ -1,17 +1,16 @@
 package com.example.petfinder.model.animal;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString(exclude = "attributes")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,7 +20,7 @@ public class AnimalType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "animalType_attribute",
             joinColumns = {@JoinColumn(name = "type_id")},

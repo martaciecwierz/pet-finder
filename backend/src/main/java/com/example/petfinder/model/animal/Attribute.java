@@ -5,10 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -22,4 +21,11 @@ public class Attribute {
     private Long id;
     private String name;
     private String type;
+    @ManyToMany
+    @JoinTable(
+            name = "animalType_attribute",
+            joinColumns = {@JoinColumn(name = "attribute_id")},
+            inverseJoinColumns = {@JoinColumn(name = "type_id")}
+    )
+    private Set<AnimalType> animalTypes = new HashSet<>();
 }

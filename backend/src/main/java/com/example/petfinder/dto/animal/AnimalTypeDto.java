@@ -1,14 +1,13 @@
 package com.example.petfinder.dto.animal;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString(exclude = "attributes")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
