@@ -72,7 +72,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         //         .and()
         //               .logout();
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-       // http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
     }
 
     @Bean
