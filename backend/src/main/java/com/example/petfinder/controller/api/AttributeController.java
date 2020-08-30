@@ -38,7 +38,7 @@ public class AttributeController {
         return new ListAttributesResponse(attributeService.findAllAttributes());
     }
 
-    @PutMapping("attribute")
+    @PutMapping("attribute/{id}")
     public AttributeResponse updateAttribute(@RequestBody UpdateAttributeRequest updateAttributeRequest) {
         AttributeDto attributeDto = attributeService.updateAttribute(updateAttributeRequest.getId(), updateAttributeRequest.getName(), updateAttributeRequest.getType());
         return new AttributeResponse(attributeDto.getId(), attributeDto.getName(), attributeDto.getType());
