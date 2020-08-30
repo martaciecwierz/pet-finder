@@ -56,7 +56,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
         http.csrf().disable()
                 .authorizeRequests().antMatchers("/api/register", "/login").permitAll()
                 .anyRequest().authenticated()
@@ -73,6 +72,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         //         .and()
         //               .logout();
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
     }
 
     @Bean
