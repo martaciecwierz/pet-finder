@@ -24,7 +24,7 @@ export default {
         this.$emit('edit', attribute)
       },
       remove: function (attribute) {
-        this.$emit('delete', attribute)
+        this.$emit('remove', attribute)
       }
     }
 }

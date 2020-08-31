@@ -105,8 +105,7 @@
                       axiosInstance
                           .put(apiConfig.attributePostUrl + "/" + this.attribute.id, JSON.stringify(postData),
                               {headers: vm.headers}
-                          ).then(function (response) {
-                        console.log("OK", response)
+                          ).then(function () {
                         vm.$emit('refresh')
                         vm.$bvModal.hide(vm.modal.id)
                       }).catch(function (error) {
