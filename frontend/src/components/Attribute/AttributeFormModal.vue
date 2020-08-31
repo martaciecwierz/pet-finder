@@ -15,7 +15,7 @@
 
             <ValidationProvider name="Typ wartości" rules="required" v-slot="v">
                 <b-form-group
-                        id="name"
+                        id="type"
                         label="Typ wartości"
                         label-for="type">
                     <b-select id="type" v-model="attribute.type">
@@ -72,8 +72,14 @@
                         name: "",
                         type: "",
                     }
+                    this.modal.title= "Nowy atrybut"
+                    this.modal.confirmText= "Dodaj"
+
                 } else {
                     this.attribute = { ...attribute }
+                  this.modal.title = "Edycja atrybutu"
+                    this.modal.confirmText = "Zmień"
+
                 }
                 this.$bvModal.show(this.modal.id)
             },

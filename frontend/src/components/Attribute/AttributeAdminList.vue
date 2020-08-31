@@ -1,6 +1,6 @@
 <template>
     <b-col cols="12" md="8" lg="10" class="text-left">
-        <attribute-form-modal ref="modal"/>
+        <attribute-form-modal ref="modal" @refresh="get"/>
         <b-row>
             <b-col cols="12" md="10">
                 <h4>Zarządzanie bazą atrybutów</h4>
