@@ -9,7 +9,7 @@ import com.example.petfinder.error.exception.validation.LastNameValidationExcept
 import com.example.petfinder.error.exception.validation.PasswordIValidationException;
 import com.example.petfinder.model.user.User;
 import com.example.petfinder.repository.UserRepository;
-import com.example.petfinder.validation.UserValidator;
+import com.example.petfinder.validation.InputDataValidator;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -47,19 +47,19 @@ public class RegistrationService {
             throw new EmailConflictException(userDto.getEmail());
         }
 
-        if (!UserValidator.isPasswordValid(userDto.getPassword())) {
+        if (!InputDataValidator.isPasswordValid(userDto.getPassword())) {
             throw new PasswordIValidationException(userDto.getPassword().length());
         }
 
-        if (!UserValidator.isFirstNameValid(userDto.getFirstName())) {
+        if (!InputDataValidator.isFirstNameValid(userDto.getFirstName())) {
             throw new FirstNameValidationException(userDto.getFirstName());
         }
 
-        if (!UserValidator.isLastNameValid(userDto.getLastName())) {
+        if (!InputDataValidator.isLastNameValid(userDto.getLastName())) {
             throw new LastNameValidationException(userDto.getLastName());
         }
 
-        if (!UserValidator.isEmailValid(userDto.getEmail())) {
+        if (!InputDataValidator.isEmailValid(userDto.getEmail())) {
             throw new EmailValidationException(userDto.getEmail());
         }
 

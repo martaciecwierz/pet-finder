@@ -6,8 +6,6 @@ import com.example.petfinder.error.exception.notFound.UserNotFoundException;
 import com.example.petfinder.error.exception.unauthorized.InvalidPasswordException;
 import com.example.petfinder.security.JwtTokenUtil;
 import com.example.petfinder.security.UserDetailsServiceImpl;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -50,4 +48,5 @@ public class LoginController {
             throw new InvalidPasswordException();
         }
     }
+
 }

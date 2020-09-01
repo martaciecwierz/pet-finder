@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @Transactional(readOnly = true)
@@ -35,6 +36,12 @@ public class ShelterService {
                 .collect(Collectors.toList());
     }
 
+    public List<ShelterDto> findAllShelters() {
+        return StreamSupport.stream(shelterRepository.findAll().spliterator(), false)
+                .map(shelter -> modelMapper.map(shelter, ShelterDto.class))
+                .collect(Collectors.toList());
+    }
+
     @Transactional
     public ShelterDto addShelter(ShelterDto shelterDto) {
         Shelter shelter = Shelter.builder()
@@ -48,5 +55,28 @@ public class ShelterService {
                 .description(shelterDto.getDescription())
                 .build();
         return modelMapper.map(shelterRepository.save(shelter), ShelterDto.class);
+    }
+
+    @Transactional
+    public ShelterDto updateShelter(ShelterDto shelterDto) {
+        Shelter shelter = shelterRepository.findById(shelterDto.getId())
+                .orElseThrow(() -> new ShelterNotFoundException(shelterDto.getId()));
+        shelter.setName(shelterDto.getName());
+        shelter.setAddressStreet(shelterDto.getAddressStreet());
+        shelter.setAddressBuilding(shelterDto.getAddressBuilding());
+        shelter.setAddressCity(shelterDto.getAddressCity());
+        shelter.setAddressPostCode(shelterDto.getAddressPostCode());
+        shelter.setPhone(shelterDto.getPhone());
+        shelter.setDescription(shelterDto.getDescription());
+        return modelMapper.map(shelterRepository.save(shelter), ShelterDto.class);
+    }
+
+    @Transactional
+    public void deleteShelter(Long shelterId) {
+        if (shelterRepository.existsById(shelterId)) {
+            shelterRepository.deleteById(shelterId);
+        } else {
+            throw new ShelterNotFoundException(shelterId);
+        }
     }
 }
