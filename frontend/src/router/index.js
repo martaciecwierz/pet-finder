@@ -11,6 +11,7 @@ import ActionTypeAdmin from "@/views/ActionTypes/ActionTypeAdmin";
 import UserAdmin from "@/views/Users/UserAdmin";
 import ArticleAdmin from "@/views/Articles/ArticleAdmin";
 import CommentAdmin from "@/views/Comments/CommentAdmin";
+import ShelterAdmin from "@/views/Shelters/ShelterAdmin";
 
 Vue.use(VueRouter)
 
@@ -58,6 +59,11 @@ Vue.use(VueRouter)
     path: '/admin/attributes',
     name: 'AttributesAdmin',
     component: AttributeAdmin
+  },
+  {
+    path: '/admin/shelters',
+    name: 'SheltersAdmin',
+    component: ShelterAdmin
   },
   {
     path: '/admin/action-types',

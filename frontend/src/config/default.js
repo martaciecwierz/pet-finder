@@ -4,5 +4,7 @@ export default {
     registerUrl: "/api/register",
     attributePostUrl: "/api/attribute",
     attributeGetUrl: "/api/attributes",
+    shelterPostUrl: "/api/shelter",
+    shelterGetUrl: "/api/shelters",
     loginUrl: "/login",
 };
