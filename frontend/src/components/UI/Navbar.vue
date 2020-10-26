@@ -21,7 +21,7 @@
                         <b-icon-person></b-icon-person>
                         <em>{{ getUsername() }}</em>
                     </template>
-                    <b-dropdown-item href="#">Profil użytkownika</b-dropdown-item>
+                    <b-dropdown-item href="#" @click.prevent="$router.push({name: 'UserProfile'})">Profil użytkownika</b-dropdown-item>
                     <b-dropdown-item href="#" @click.prevent="$router.push({name: 'PetAdmin'})">Administracja</b-dropdown-item>
                     <b-dropdown-item href="#" @click.prevent="logout">Wyloguj</b-dropdown-item>
                 </b-nav-item-dropdown>

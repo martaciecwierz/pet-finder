@@ -12,6 +12,11 @@ import UserAdmin from "@/views/Users/UserAdmin";
 import ArticleAdmin from "@/views/Articles/ArticleAdmin";
 import CommentAdmin from "@/views/Comments/CommentAdmin";
 import ShelterAdmin from "@/views/Shelters/ShelterAdmin";
+import UserProfile from "@/views/Users/UserProfile";
+import ChangePassword from "@/views/Users/ChangePassword";
+import ChangeUserInfo from "@/views/Users/ChangeUserInfo";
+import ShelterInfo from "@/views/Shelters/ShelterInfo";
+import ShelterPetsList from "@/views/Shelters/ShelterPetsList";
 
 Vue.use(VueRouter)
 
@@ -79,6 +84,31 @@ Vue.use(VueRouter)
     path: '/shelters',
     name: 'SheltersList',
     component: SheltersList
+  },
+  {
+    path: '/shelters/:id',
+    name: 'ShelterInfo',
+    component: ShelterInfo
+  },
+  {
+    path: '/shelters/:id/pets',
+    name: 'ShelterPetsList',
+    component: ShelterPetsList
+  },
+  {
+    path: '/user',
+    name: 'UserProfile',
+    component: UserProfile
+  },
+  {
+    path: '/user/password',
+    name: 'ChangePassword',
+    component: ChangePassword
+  },
+  {
+    path: '/user/edit',
+    name: 'ChangeUserInfo',
+    component: ChangeUserInfo
   },
   {
     path: '/about',

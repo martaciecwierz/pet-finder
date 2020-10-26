@@ -6,5 +6,7 @@ export default {
     attributeGetUrl: "/api/attributes",
     shelterPostUrl: "/api/shelter",
     shelterGetUrl: "/api/shelters",
+    passwordChangePutUrl: "/api/password/change",
+    userPutUrl: "/api/user",
     loginUrl: "/login",
 };

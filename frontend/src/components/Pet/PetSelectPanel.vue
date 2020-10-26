@@ -15,7 +15,7 @@
                         <h4>Schronisko</h4>
                         {{ pet.shelter.name }}
                     </b-col>
-                    <b-button>Przejdź  do schroniska</b-button>
+                    <b-button v-if="!$props.shelterMode">Przejdź  do schroniska</b-button>
                 </b-row>
             </b-col>
         </b-row>
@@ -28,7 +28,8 @@
         name: 'PetSelectPanel',
         props: {
             pet: Object,
-            msg: String
+            msg: String,
+            shelterMode: Boolean
         }
     }
 </script>

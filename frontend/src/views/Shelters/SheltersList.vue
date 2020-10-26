@@ -12,7 +12,7 @@ export default {
   components: {
     ShelterSelectPanel
   },
-  name: 'PetList',
+  name: 'SheltersList',
   data: function () {
     return {
       shelters:
