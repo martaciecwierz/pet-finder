@@ -18,7 +18,7 @@
 export default {
 name: "PetProfileImages",
   props: {
-  images: Object
+  images: Array
   },
   data(){
   return {

@@ -1,6 +1,6 @@
 <template>
   <b-row cols="12" class="admin">
-    <user-menu/>
+    <pet-menu/>
     <b-col cols="12" md="8" lg="10" class="text-left">
       <pet-profile-summary :pet="pet"/>
       <pet-profile-images v-if="pet.images && pet.images.length>0" :images="pet.images" class="mt-3"/>
@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import UserMenu from "@/components/UI/UserMenu";
 import PetProfileSummary from "@/components/Pet/PetProfileSummary";
 import ShelterSummary from "@/components/Shelter/ShelterSummary";
 import PetProfileImages from "@/components/Pet/PetProfileImages";
+import PetMenu from "@/components/UI/PetMenu";
 
 export default {
   name: "PetProfile",
-  components: {PetProfileImages, ShelterSummary, PetProfileSummary, UserMenu},
+  components: {PetMenu, PetProfileImages, ShelterSummary, PetProfileSummary},
   data(){
     return {
 

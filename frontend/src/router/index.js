@@ -18,6 +18,7 @@ import ChangeUserInfo from "@/views/Users/ChangeUserInfo";
 import ShelterInfo from "@/views/Shelters/ShelterInfo";
 import ShelterPetsList from "@/views/Shelters/ShelterPetsList";
 import PetProfile from "@/views/Pets/PetProfile";
+import PetRates from "@/views/Pets/PetRates";
 
 Vue.use(VueRouter)
 
@@ -43,8 +44,13 @@ const routes = [
     },
     {
         path: '/pets/:id',
-        name: PetProfile,
+        name: 'PetProfile',
         component: PetProfile
+    },
+    {
+        path: '/pets/:id/rates',
+        name: 'PetRates',
+        component: PetRates
     },
     {
         path: '/admin/pets',
