@@ -1,6 +1,7 @@
 <template>
   <b-card class="w-100">
     <b-card-body class="w-100">
+      <h3>Informacje o schronisku</h3>
       <table class="table">
         <tr>
           <th>Nazwa schroniska</th>
