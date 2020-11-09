@@ -1,6 +1,14 @@
 <template>
   <b-col cols="12" md="8" lg="10" class="text-left">
-    <h4>Zarządzanie Aktualnościami</h4>
+    <article-form-modal ref="modal"/>
+    <b-row>
+      <b-col cols="12" md="10">
+        <h4>Zarządzanie artykułami</h4>
+      </b-col>
+      <b-col cols="12" md="2" class="add-new-button-col">
+        <b-button class="add-new-button" @click.prevent="addModal">Dodaj Artykuł</b-button>
+      </b-col>
+    </b-row>
     <b-table striped
              hover
              responsive
@@ -19,10 +27,13 @@
 
 <script>
 import ArticleAdminListTools from "@/components/Article/ArticleAdminListTools";
+import ArticleFormModal from "@/components/Article/ArticleFormModal";
+import axiosInstance from "@/tools/axiosInstance";
+import apiConfig from "@/apiConfig";
 
 export default {
   name: 'ArticleAdminList',
-  components: {ArticleAdminListTools},
+  components: {ArticleFormModal, ArticleAdminListTools},
   data: function () {
     return {
       fields: [
@@ -87,6 +98,25 @@ export default {
         date: "2020-08-30"
       },]
     }
+  },
+  methods: {
+    addModal(){
+      this.$refs.modal.show()
+    },
+    get: function () {
+      let vm = this
+      axiosInstance
+          .get(apiConfig.articlesGetUrl,
+              {headers: vm.headers}
+          ).then(function (response) {
+        vm.attributes = response.data.attributes
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
+  },
+  mounted() {
+    this.get()
   }
 }
 </script>

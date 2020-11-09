@@ -8,5 +8,7 @@ export default {
     shelterGetUrl: "/api/shelters",
     passwordChangePutUrl: "/api/password/change",
     userPutUrl: "/api/user",
+    articlePostUrl: "/api/article",
+    articlesGetUrl: "/api/articles",
     loginUrl: "/login",
 };
